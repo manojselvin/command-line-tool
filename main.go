@@ -22,8 +22,11 @@ func main() {
 		return
 	}
 
+	// Filter even numbered TODOs
+	evenTodos := filterEvenTodos(todos)
+
 	// Output title and completion status of each TODO
-	for _, todo := range todos {
+	for _, todo := range evenTodos {
 		fmt.Printf("Id: %d | Title: %s | Completed: %t\n", todo.ID, todo.Title, todo.Completed)
 	}
 }
@@ -43,4 +46,15 @@ func fetchTodos(url string) ([]Todo, error) {
 	}
 
 	return todos, nil
+}
+
+// Filters even numbered TODOs
+func filterEvenTodos(todos []Todo) []Todo {
+	var evenTodos []Todo
+	for _, todo := range todos {
+		if todo.ID%2 == 0 {
+			evenTodos = append(evenTodos, todo)
+		}
+	}
+	return evenTodos
 }
