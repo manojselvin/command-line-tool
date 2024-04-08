@@ -55,6 +55,10 @@ func filterEvenTodos(todos []Todo) []Todo {
 		if todo.ID%2 == 0 {
 			evenTodos = append(evenTodos, todo)
 		}
+		print(todo.ID)
+		if len(evenTodos) == 20 {
+			break
+		}
 	}
 	return evenTodos
 }
