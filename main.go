@@ -14,6 +14,8 @@ type Todo struct {
 	Completed bool   `json:"completed"`
 }
 
+const MAX_TODOS int = 20
+
 func main() {
 	// Fetch TODO items from an API endpoint
 	todos, err := fetchTodos("https://jsonplaceholder.typicode.com/todos?limit=40")
@@ -55,8 +57,7 @@ func filterEvenTodos(todos []Todo) []Todo {
 		if todo.ID%2 == 0 {
 			evenTodos = append(evenTodos, todo)
 		}
-		print(todo.ID)
-		if len(evenTodos) == 20 {
+		if len(evenTodos) == MAX_TODOS {
 			break
 		}
 	}
